@@ -68,6 +68,7 @@ a {
   padding: 0 0 0 72px;
   z-index: 1;
   position: fixed;
+  will-change:transform;
 }
 
 .header__title-wrapper {
@@ -92,20 +93,13 @@ a {
   opacity: 0.54;
 }
 
-body.details-active .story__title,
-body.details-active .story__by,
-body.details-active .story__score {
-  transition: opacity 0.5s ease-out;
-  opacity: 0 !important;
-}
 
 body.details-active .story {
   background: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 body.raised .header {
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16),
-      0px 2px 5px 0px rgba(0, 0, 0, 0.23);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
 main {
@@ -117,6 +111,7 @@ main {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 0;
+  will-change:transform;
 }
 
 main.loading {
@@ -163,14 +158,11 @@ main.loading {
   border-bottom: 1px solid #dedede;
 }
 
-.story:nth-last-child(-n+1):after {
-  display: none;
-}
 
 .story__title {
   font-size: 20px;
   font-weight: 500;
-  color: rgba(0,0,0,0.87);
+  color: rgb(33, 33, 33);
   margin: 0;
   padding: 0;
   line-height: 32px;
@@ -178,7 +170,7 @@ main.loading {
 
 .story__by,
 .story-details__by {
-  color: rgba(0,0,0,0.54);
+  color: rgb(112, 112, 112);
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -190,18 +182,14 @@ main.loading {
   height: 40px;
   background: #FFB300;
   border-radius: 50%;
-  color: rgba(255,255,255,0.87);
+  color: rgb(249, 249, 249);
   font-weight: 500;
   font-size: 13px;
   left: 16px;
   top: 16px;
   text-align: center;
   line-height: 40px;
-
-  box-shadow:
-      0px 2px 5px 0px rgba(0, 0, 0, 0.06),
-      0px 2px 5px 0px rgba(0, 0, 0, 0.08),
-      0px 2px 7px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 .story-details {
@@ -232,16 +220,10 @@ main.loading {
   height: 100%;
   background: white;
   z-index: 2;
-  box-shadow:
-      0px 2px 5px 0px rgba(0, 0, 0, 0.06),
-      0px 2px 5px 0px rgba(0, 0, 0, 0.08),
-      0px 2px 7px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 
   overflow: hidden;
   transition: opacity 0.3s ease-out;
-}
-
-.story-details * {
   will-change: transform;
   transform: translateZ(0);
 }
@@ -266,13 +248,12 @@ main.loading {
 }
 
 .story-details__title-link {
-  color: #FFF;
-  opacity: 0.6;
+  color: rgb(251, 251, 251);
 }
 
 .story-details__url {
   font-size: 14px;
-  color: rgba(255,255,255,0.6);
+  color: rgb(251, 251, 251);
   font-weight: 400;
 }
 
