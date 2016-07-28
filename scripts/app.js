@@ -76,9 +76,9 @@ APP.Main = (function() {
     // Tick down. When zero we can batch in the next load.
     storyLoadCount--;
 
-    // Colorize on complete.
-    if (storyLoadCount === 0)
-      colorizeAndScaleStories();
+    // Colorize no longer usable
+    //if (storyLoadCount === 0)
+    //  colorizeAndScaleStories();
   }
 
   function onStoryClick(details) {
@@ -169,47 +169,47 @@ APP.Main = (function() {
   }
 
   /**
-   * Does this really add anything? Can we do this kind
-   * of work in a cheaper way?
+   * I've improved this function but it is still not good,
+   * so i decided to comment it
    */
-  function colorizeAndScaleStories() {
-    // Select all stories
-    var storyElements = document.querySelectorAll('.story');
-    // Prepare array for stories we want to edit
-    var onScreenStories = [];
+  //function colorizeAndScaleStories() {
+  //  // Select all stories
+  //  var storyElements = document.querySelectorAll('.story');
+  //  // Prepare array for stories we want to edit
+  //  var onScreenStories = [];
 
-    // Go through all stories and figure out if it is on the screen
-    for (var s = 0; s < storyElements.length; s++) {
-        var storyPosition = storyElements[s].getBoundingClientRect();
-        // It IS on the screen if its storyPosition.top > 0
-        if (storyPosition.top > 0) {
-            // and if its storyPosition.top > mainOffsetHeight
-            // then it is above the screen
-            if (storyPosition.top > mainOffsetHeight) {
-                // and if we found element that above the screen
-                // all other stories also not visible
-                // so we can break the loop
-                break;
-            }
-            else {
-                // if storyPosition.top > 0 && storyPosition.top > mainOffsetHeight
-                // it is on the screen, so we can push it in on-screen-array
-                // as object with info about its scale and opacity
-                onScreenStories.push({
-                    'story': storyElements[s],
-                    'scale': Math.min(1, 1 - Math.pow(((storyPosition.top - 170) / mainOffsetHeight), 2)),
-                    'opacity': Math.min(1, 1.2 - (1 * ((storyPosition.top - 170) / mainOffsetHeight)))
-                });
-            }
-        }
-    }
+  //  // Go through all stories and figure out if it is on the screen
+  //  for (var s = 0; s < storyElements.length; s++) {
+  //      var storyPosition = storyElements[s].getBoundingClientRect();
+  //      // It IS on the screen if its storyPosition.top > 0
+  //      if (storyPosition.top > 0) {
+  //          // and if its storyPosition.top > mainOffsetHeight
+  //          // then it is above the screen
+  //          if (storyPosition.top > mainOffsetHeight) {
+  //              // and if we found element that above the screen
+  //              // all other stories also not visible
+  //              // so we can break the loop
+  //              break;
+  //          }
+  //          else {
+  //              // if storyPosition.top > 0 && storyPosition.top > mainOffsetHeight
+  //              // it is on the screen, so we can push it in on-screen-array
+  //              // as object with info about its scale and opacity
+  //              onScreenStories.push({
+  //                  'story': storyElements[s],
+  //                  'scale': Math.min(1, 1 - Math.pow(((storyPosition.top - 170) / mainOffsetHeight), 2)),
+  //                  'opacity': Math.min(1, 1.2 - (1 * ((storyPosition.top - 170) / mainOffsetHeight)))
+  //              });
+  //          }
+  //      }
+  //  }
 
-    // Apply style changes for selected on-screen-elements
-    for (var s = 0; s < onScreenStories.length; s++) {
-        onScreenStories[s].story.querySelector('.story__score').style.transform = 'scale(' + onScreenStories[s].scale + ', ' + onScreenStories[s].scale + ')';
-        onScreenStories[s].story.style.opacity = onScreenStories[s].opacity;
-    }
-  }
+  //  // Apply style changes for selected on-screen-elements
+  //  for (var s = 0; s < onScreenStories.length; s++) {
+  //      onScreenStories[s].story.querySelector('.story__score').style.transform = 'scale(' + onScreenStories[s].scale + ', ' + onScreenStories[s].scale + ')';
+  //      onScreenStories[s].story.style.opacity = onScreenStories[s].opacity;
+  //  }
+  //}
 
   var header = $('header');
   var headerTitles = header.querySelector('.header__title-wrapper');
@@ -223,7 +223,9 @@ APP.Main = (function() {
     headerTitles.style.webkitTransform = scaleString;
     headerTitles.style.transform = scaleString;
 
-    colorizeAndScaleStories();
+    // This function was refactored, 
+    // but decided to comment it anyway
+    //colorizeAndScaleStories();
 
     // Add a shadow to the header.
     if (mainScrollTop > 70)
