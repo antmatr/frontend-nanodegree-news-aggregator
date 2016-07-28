@@ -94,9 +94,7 @@ a {
 }
 
 
-body.details-active .story {
-  background: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
-}
+
 
 body.raised .header {
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
@@ -212,20 +210,36 @@ main.loading {
       -webkit-align-content: stretch;
           align-content: stretch;
 
-  opacity: 0;
   position: fixed;
   top: 0;
-  left: 100%;
+  left: 0;
   width: 100%;
   height: 100%;
   background: white;
   z-index: 2;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-
   overflow: hidden;
-  transition: opacity 0.3s ease-out;
+  transition: all 0.3s ease-out;
   will-change: transform;
-  transform: translateZ(0);
+  animation: sd-out 0.3s ease-in-out 0s 1;
+  transform:translate3d(100%, 0, 0);
+}
+
+
+.story-details.visible {
+    transform:translate3d(0, 0, 0);
+    animation: sd-in 0.3s ease-in-out 0s 1;
+}
+
+@keyframes sd-in {
+    0% {
+        visibility: hidden;
+        transform:translate3d(100%, 0, 0);
+    }
+    100% {
+        transform:translate3d(0, 0, 0);
+        visibility: visible;
+    }
 }
 
 .story-details__content {
@@ -260,9 +274,7 @@ main.loading {
 .story-details__header {
   padding: 16px 16px 64px 72px;
   background: #FFA000;
-  position: absolute;
-  left: 0;
-  top: 0;
+  position: relative;
   width: 100%;
   z-index: 1;
 }
