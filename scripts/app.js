@@ -211,16 +211,6 @@ APP.Main = (function() {
     }
   }
 
-  main.addEventListener('touchstart', function(evt) {
-
-    // I just wanted to test what happens if touchstart
-    // gets canceled. Hope it doesn't block scrolling on mobiles...
-    if (Math.random() > 0.97) {
-      evt.preventDefault();
-    }
-
-  });
-
   var header = $('header');
   var headerTitles = header.querySelector('.header__title-wrapper');
   var mainOffsetHeight = main.offsetHeight;
